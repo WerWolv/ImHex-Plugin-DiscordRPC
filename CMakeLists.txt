@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 set(CMAKE_CXX_STANDARD 20)
 
 # Change this to the name of your plugin #
-project(example_cpp)
+project(discord_rpc)
 
 # Include ImHex cmake module #
 set(IMHEX_BASE_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/ImHex)
@@ -13,15 +13,18 @@ include("${IMHEX_BASE_FOLDER}/cmake/build_helpers.cmake")
 add_subdirectory(${IMHEX_BASE_FOLDER})
 addVersionDefines()
 
+set(ARCH x86_64)
+add_subdirectory(lib/discord-game-sdk)
+
 # Add your source files here #
 add_library(${PROJECT_NAME} SHARED
-        source/plugin_example.cpp
+        source/plugin_discord_rpc.cpp
 )
 
 # Add additional include directories here #
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 # Add additional libraries here #
-target_link_libraries(${PROJECT_NAME} PRIVATE)
+target_link_libraries(${PROJECT_NAME} PRIVATE discord_game_sdk)
 
 
 
@@ -52,5 +55,5 @@ set(LIBROMFS_RESOURCE_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/romfs)
 set(LIBROMFS_PROJECT_NAME ${PROJECT_NAME})
 add_subdirectory(${IMHEX_BASE_FOLDER}/lib/external/libromfs ${CMAKE_CURRENT_BINARY_DIR}/libromfs)
 set_target_properties(${LIBROMFS_LIBRARY} PROPERTIES POSITION_INDEPENDENT_CODE ON)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBROMFS_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBROMFS_LIBRARY} fmt::fmt-header-only)
 

@@ -1,0 +1,9 @@
+{
+    "code": "en-US",
+    "language": "English",
+    "country": "United States",
+    "fallback": true,
+    "translations": {
+        "hex.discord_rpc.analyzing": "Analyzing '{0}'"
+    }
+}
