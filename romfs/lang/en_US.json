@@ -4,6 +4,11 @@
     "country": "United States",
     "fallback": true,
     "translations": {
-        "hex.discord_rpc.analyzing": "Analyzing '{0}'"
+        "hex.discord_rpc.settings": "Discord RPC",
+        "hex.discord_rpc.settings.desc": "Discord Rich Presence",
+        "hex.discord_rpc.settings.enabled": "Enable Discord Rich Presence",
+        "hex.discord_rpc.settings.show_provider": "Show Provider Name",
+        "hex.discord_rpc.settings.show_selection": "Show current selection",
+        "hex.discord_rpc.settings.show_timestamp": "Show Timestamp"
     }
 }
